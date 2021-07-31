@@ -176,11 +176,11 @@
 export default {
   data: () => ({
     isOpen: false,
-    title1: 'Bad Bunny',
-    title2: 'Concierto 2021',
-    place: 'Estadio Cuscatlan',
+    title1: 'Conferencia',
+    title2: 'JavaScript 2021',
+    place: 'Universidad Don Bosco',
     country: 'El Salvador',
-    slogan: 'El conejo esta devuelta',
+    slogan: 'Estamos devuelta',
     date: '01/08/2021',
   }),
 };
@@ -191,7 +191,7 @@ export default {
   background-color: #100a76;
 }
 
-/* POSTERIDAD */
+/* PARA LA POSTERIDAD */
 .from-bottom-enter-active {
   animation: animation 0.5s;
 }

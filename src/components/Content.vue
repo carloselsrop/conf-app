@@ -2,11 +2,11 @@
   <div class="pt-8 bg1 h-screen">
     <!-- Some Text -->
     <div class="flex flex-col items-center space-y-4">
-      <div class="text-gray-300">Estamos de vuelta - Julio 31/2021</div>
-      <div class="text-7xl text-gray-50">No-Code <br />Conf 2021</div>
-      <div class="text-gray-300">
-        Palacio del arte San Salvador - El Salvador
+      <div class="text-gray-300 select-none">{{ slogan }} - {{ date }}</div>
+      <div class="text-7xl text-gray-50 text-center select-none">
+        {{ title1 }}<br />{{ title2 }}
       </div>
+      <div class="text-gray-300 select-none">{{ place }} - {{ country }}</div>
       <!-- Toggle div -->
       <div
         class="
@@ -21,7 +21,15 @@
           rounded-full
         "
       >
-        <div class="text-sm text-center uppercase font-bold text-gray-100">
+        <div
+          class="
+            text-sm text-center
+            uppercase
+            font-bold
+            text-gray-100
+            select-none
+          "
+        >
           Aun no estas registrado?
         </div>
         <button
@@ -168,6 +176,12 @@
 export default {
   data: () => ({
     isOpen: false,
+    title1: 'Bad Bunny',
+    title2: 'Concierto 2021',
+    place: 'Estadio Cuscatlan',
+    country: 'El Salvador',
+    slogan: 'El conejo esta devuelta',
+    date: '01/08/2021',
   }),
 };
 </script>

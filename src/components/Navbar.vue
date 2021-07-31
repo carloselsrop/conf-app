@@ -36,31 +36,43 @@
       </svg>
     </div>
     <div class="w-1/3 flex justify-end pr-8">
-      <button
-        class="
-          flex
-          animate-bounce
-          items-center
-          hover:bg-white
-          transition
-          duration-300
-          text-xs text-black
-          uppercase
-          font-bold
-          bg-pink-400
-          py-2
-          px-4
-          rounded-full
-        "
+      <router-link to="/login" class="mr-4">
+        <button
+          class="text-center text-xs text-white uppercase font-bold py-2 px-1"
+        >
+          <div class="select-none">Cerrar Sesion</div>
+        </button>
+      </router-link>
+      <a
+        target="_blank"
+        href="https://github.com/carloselsrop?tab=repositories"
       >
-        <img
-          class="w-6 h-6 mr-2"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png"
-          alt=""
-        />
-        <div></div>
-        @carloselsrop
-      </button>
+        <button
+          class="
+            flex
+            animate-bounce
+            items-center
+            hover:bg-white
+            transition
+            duration-300
+            text-xs text-black
+            uppercase
+            font-bold
+            bg-pink-400
+            py-2
+            px-4
+            rounded-full
+            select-none
+          "
+        >
+          <img
+            class="w-6 h-6 mr-2"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png"
+            alt=""
+          />
+          <div>@carloselsrop</div>
+        </button>
+      </a>
     </div>
   </div>
 </template>

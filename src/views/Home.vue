@@ -1,18 +1,33 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="bg h-screen overflow-hidden">
+    <Navbar />
+    <div class="bg1">
+      <Content />
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import Navbar from '../components/Navbar.vue';
+import Content from '../components/Content.vue';
 
 export default {
-  name: 'Home',
   components: {
-    HelloWorld,
+    Navbar,
+    Content,
   },
 };
 </script>
+
+<style scoped>
+.bg {
+  background-color: #100a76;
+}
+
+.bg1 {
+  background: url("https://www.pngall.com/wp-content/uploads/2016/07/Vector-Download-PNG.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>

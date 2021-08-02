@@ -8,12 +8,12 @@
 
 <style>
 .slide-fade-enter-active {
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease;
 }
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-  transform: translateY(200px);
+  transform: translateZ(0);
   opacity: 0;
 }
 </style>

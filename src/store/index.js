@@ -1,11 +1,10 @@
 import { createStore } from 'vuex';
-import state from './state';
-import mutations from './mutations';
-import actions from './actions';
+import authModule from './modules/auth';
+import eventsModule from './modules/events/index';
 
 export default createStore({
-  state,
-  mutations,
-  actions,
-  modules: {},
+  modules: {
+    auth: authModule,
+    events: eventsModule,
+  },
 });

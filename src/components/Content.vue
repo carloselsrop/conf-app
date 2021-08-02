@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-8 bg1 h-screen">
+  <div class="pt-4 bg1 h-screen">
     <!-- Some Text -->
     <div class="flex flex-col items-center space-y-4">
       <div class="text-gray-300 select-none">{{ slogan }} - {{ date }}</div>
@@ -56,15 +56,16 @@
     <div class="flex justify-center mt-6">
       <transition name="from-bottom">
         <form
+          @submit.prevent="handleRegister"
           v-show="isOpen"
-          action=""
-          class="bg-gray-100 w-96 py-8 rounded-xl px-8 space-y-6"
+          class="bg-gray-100 w-96 py-8 rounded-xl px-8 space-y-4"
         >
           <div class="flex flex-col items-start">
             <div class="pb-2 uppercase font-bold text-sm select-none">
               Nombre:
             </div>
             <input
+              v-model="options.name"
               type="text "
               class="w-full px-4 py-2 rounded focus:outline-none select-none"
               placeholder="Ingresa tu nombre..."
@@ -76,11 +77,34 @@
             </div>
             <input
               type="text"
+              v-model="options.email"
               class="w-full px-4 py-2 rounded focus:outline-none select-none"
               placeholder="Ingresa tu email..."
             />
           </div>
           <div class="flex flex-col items-start">
+            <div class="pb-2 uppercase font-bold text-sm select-none">
+              Contraseña:
+            </div>
+            <input
+              type="password"
+              v-model="options.password"
+              class="w-full px-4 py-2 rounded focus:outline-none select-none"
+              placeholder="Ingresa tu email..."
+            />
+          </div>
+          <div class="flex flex-col items-start">
+            <div class="pb-2 uppercase font-bold text-sm select-none">
+              Confirmar Contraseña:
+            </div>
+            <input
+              type="password"
+              v-model="options.password_confirmation"
+              class="w-full px-4 py-2 rounded focus:outline-none select-none"
+              placeholder="Ingresa tu email..."
+            />
+          </div>
+          <!-- <div class="flex flex-col items-start">
             <div class="pb-2 uppercase font-bold text-sm select-none">
               Imagen:
             </div>
@@ -147,9 +171,10 @@
             >
               *opcional*
             </div>
-          </div>
+          </div> -->
           <div>
             <button
+              type="submit"
               class="
                 bg
                 text-white
@@ -158,6 +183,7 @@
                 rounded-full
                 w-full
                 uppercase
+                focus:outline-none
                 font-bold
                 text-sm
                 select-none
@@ -166,6 +192,51 @@
               Enviar
             </button>
           </div>
+          <div
+            v-if="message"
+            class="
+              w-full
+              flex
+              items-center
+              justify-center
+              space-x-2
+              bg-gray-200
+              rounded
+              py-1
+            "
+          >
+            <svg
+              v-if="message.type === 'success'"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-green-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-red-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+            <div class="uppercase">{{ message.message }}</div>
+          </div>
         </form>
       </transition>
     </div>
@@ -173,6 +244,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
   data: () => ({
     isOpen: false,
@@ -182,7 +255,18 @@ export default {
     country: 'El Salvador',
     slogan: 'Estamos devuelta',
     date: '01/08/2021',
+    options: {},
   }),
+  computed: {
+    ...mapState('auth', ['loading', 'message']),
+  },
+  methods: {
+    ...mapActions('auth', ['register']),
+
+    async handleRegister() {
+      await this.register(this.options);
+    },
+  },
 };
 </script>
 

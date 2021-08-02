@@ -1,6 +1,6 @@
 <template>
   <div class="bg h-screen overflow-hidden">
-    <Navbar />
+    <Navbar navbar="Inicio" />
     <div class="bg1">
       <Content />
     </div>
@@ -16,6 +16,7 @@ export default {
     Navbar,
     Content,
   },
+
 };
 </script>
 

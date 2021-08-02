@@ -28,11 +28,15 @@
         Conf 2021
       </div>
     </div>
-    <div class="w-96 px-8 rounded-xl space-y-8 py-8 bg-blue-800">
+    <form
+      @submit.prevent="handleLogin"
+      class="w-96 px-8 rounded-xl space-y-8 py-8 bg-blue-800"
+    >
       <div>
-        <div class="text-gray-200 uppercase font-bold font-mono">Nombre:</div>
+        <div class="text-gray-200 uppercase font-bold font-mono">Correo:</div>
         <input
-          type="text"
+          v-model="options.email"
+          type="email"
           class="
             w-full
             py-1
@@ -51,6 +55,7 @@
           Contraseña:
         </div>
         <input
+          v-model="options.password"
           type="password"
           class="
             w-full
@@ -66,23 +71,39 @@
         />
       </div>
       <div>
-        <router-link to="/">
-          <button
-            class="text-white bg rounded py-2 uppercase font-mono font-bold"
-          >
-            Ingresar
-          </button>
-        </router-link>
+        <button
+          type="submit"
+          :disabled="loading"
+          class="text-white bg rounded py-2 uppercase font-mono font-bold"
+        >
+          Ingresar
+        </button>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
   data: () => ({
     image: 'https://www.pngall.com/wp-content/uploads/2016/07/Vector-Download-PNG.png',
+    options: {},
   }),
+  created() {
+    console.log(this.$store);
+  },
+  computed: {
+    ...mapState('auth', ['loading']),
+  },
+  methods: {
+    ...mapActions('auth', ['login']),
+
+    async handleLogin() {
+      await this.login(this.options);
+    },
+  },
 };
 </script>
 
